@@ -6,7 +6,7 @@ import { XmlPrimitiveType } from '../data';
   templateUrl: './primitive-viewer.component.html',
   styleUrls: ['./primitive-viewer.component.css']
 })
-export class PrimitiveViewerComponent implements OnInit {
+export class PrimitiveViewerComponent implements OnInit, OnChanges {
 
   @Input() type: XmlPrimitiveType;
 
@@ -14,6 +14,11 @@ export class PrimitiveViewerComponent implements OnInit {
   @Input() value;
 
   constructor() { }
+
+  ngOnChanges(c) {
+    console.log(this.value);
+    this.valueChange.emit(this.value);
+  }
 
   ngOnInit() {
     this.value = 'asdf';

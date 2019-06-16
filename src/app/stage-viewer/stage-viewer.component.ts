@@ -10,10 +10,6 @@ import { XmlService } from '../xml.service';
 })
 export class StageViewerComponent implements OnInit {
 
-  Object = Object;
-  console = console;
-  x = [1, 2, 3];
-
   data;
   xml;
 
@@ -36,6 +32,7 @@ export class StageViewerComponent implements OnInit {
   }
 
   updateXml() {
+    console.log(this.data);
     this.xml = this.xmlService.dumps(this.data);
     this.xmlInp.nativeElement.select();
   }

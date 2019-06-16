@@ -4,15 +4,15 @@
     <div class="obj-tab"></div>
     <div class="obj-body">
       <div class="obj-args" *ngIf="data.args">
-        <div *ngFor="let arg of data.args | keyvalue">
-          <div class="primitive" *ngIf="argTypeDict[arg.key].name">
+        <div *ngFor="let key of Object.keys(data.args)">
+          <div class="primitive" *ngIf="argTypeDict[key].name">
             <!-- primitive arg -->
-            <app-primitive-viewer [type]="argTypeDict[arg.key]" [(value)]="arg.value"></app-primitive-viewer>
+            <app-primitive-viewer [type]="argTypeDict[key]" [(value)]="data.args[key]"></app-primitive-viewer>
           </div>
 
-          <div *ngIf="!argTypeDict[arg.key].name">
+          <div *ngIf="!argTypeDict[key].name">
             <!-- object arg -->
-            <app-object-viewer #objChildren [data]="arg.value"></app-object-viewer>
+            <app-object-viewer #objChildren [data]="data.args[key]"></app-object-viewer>
           </div>
         </div>
       </div>

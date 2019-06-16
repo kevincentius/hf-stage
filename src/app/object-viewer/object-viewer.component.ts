@@ -1,5 +1,5 @@
 import { XmlObjectType } from './../data';
-import { Component, OnInit, Input, ContentChildren, QueryList, ViewChildren } from '@angular/core';
+import { Component, OnInit, Input, QueryList, ViewChildren, EventEmitter, Output, OnChanges } from '@angular/core';
 import { XmlTypes } from '../data';
 
 @Component({
@@ -7,11 +7,13 @@ import { XmlTypes } from '../data';
   templateUrl: './object-viewer.component.html',
   styleUrls: ['./object-viewer.component.css']
 })
-export class ObjectViewerComponent implements OnInit {
+export class ObjectViewerComponent implements OnInit, OnChanges {
 
   Object = Object;
 
   @Input() data;
+  @Output() dataChange = new EventEmitter();
+
   type: XmlObjectType;
 
   argTypeDict;
@@ -24,6 +26,11 @@ export class ObjectViewerComponent implements OnInit {
   constructor(
     private xmlTypes: XmlTypes
   ) { }
+
+  ngOnChanges(c) {
+    console.log(this.data);
+    this.dataChange.emit(this.data);
+  }
 
   ngOnInit() {
     this.type = this.xmlTypes.types[this.data.name];
