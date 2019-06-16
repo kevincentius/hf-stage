@@ -1,0 +1,354 @@
+import { Injectable } from '@angular/core';
+
+export interface XmlPrimitiveType {
+  name: string;
+  type: string;
+  default: any;
+  choices?: {value: any, name: string}[];
+}
+
+export interface XmlObjectType {
+  args: any[];
+  array: any[];
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class XmlTypes {
+
+  facingChoice = {
+    name: 'f',
+    type: 'choice',
+    default: 0,
+    choices: [
+      { value: 0, name: 'Right' },
+      { value: 1, name: 'Left' }
+    ]
+  };
+
+  arrayTypes = [
+    { 'story': [] }
+  ];
+
+  types = {
+    story: {
+      args: [{
+        name: 'storyid',
+        type: 'string',
+        default: 'story01',
+        required: true
+      }, {
+        name: 'storylevel',
+        type: 'int',
+        default: 1,
+        required: true
+      }],
+      array: [{
+        type: 'bar'
+      }]
+    },
+
+    bar: {
+      args: [{
+        name: 'bgm',
+        type: 'choice',
+        default: '13.mp3',
+        choices: [
+          { value: '01.mp3', name: 'Music #1' },
+          { value: '02.mp3', name: 'Music #2' },
+          { value: '03.mp3', name: 'Music #3' },
+          { value: '04.mp3', name: 'Music #4' },
+          { value: '05.mp3', name: 'Music #5' },
+          { value: '06.mp3', name: 'Music #6' },
+          { value: '07.mp3', name: 'Music #7' },
+          { value: '08.mp3', name: 'Music #8' },
+          { value: '09.mp3', name: 'Music #9' },
+          { value: '10.mp3', name: 'Music #10' },
+          { value: '11.mp3', name: 'Music #11' },
+          { value: '12.mp3', name: 'Big 3 theme' },
+          { value: '13.mp3', name: 'Romance' }
+        ]
+      }, {
+        type: 'bg'
+      }, {
+        name: 'left',
+        type: 'int',
+        default: 0
+      }, {
+        name: 'right',
+        type: 'int',
+        default: 20400
+      }],
+
+      array: [{
+        name: 'effect',
+        type: 'choice',
+        default: 'showTitle',
+        choices: [
+          // TODO: complete choice
+          { value: 'showTitle', name: 'Show Title' },
+          { value: 'fadeToBlack', name: 'Fade to black' },
+          { value: 'fadeFromBlack', name: 'Fade from black' }
+        ]
+      }, {
+        type: 'drama'
+      }, {
+        type: 'obj'
+      }]
+    },
+
+    bg: {
+      args: [{
+        name: 'bgid',
+        type: 'choice',
+        default: 'story03b',
+        choices: [
+          // TODO: complete choice
+          { value: 'battle2', name: '2 Teams Battle map' },
+          { value: 'story03b', name: 'Outside and entrance of Temple of Hero' }
+        ]
+      }, {
+        name: 'x',
+        type: 'int',
+        default: 20000
+      }, {
+        name: 'y',
+        type: 'int',
+        default: 0
+      }, {
+        name: 'z',
+        type: 'int',
+        default: 810
+      }, {
+        name: 'facing',
+        type: 'choice',
+        default: 0,
+        choices: [
+          { value: 0, name: 'Right' },
+          { value: 1, name: 'Left' }
+        ]
+      }]
+    },
+
+    drama: {
+      args: [{
+        name: 'state',
+        type: 'choice',
+        default: 'start',
+        choices: [
+          { value: 'start', name: 'Start' },
+          { value: 'start_add_half_hp', name: 'Recover and start' },
+          { value: 'end', name: 'End' }
+        ]
+      }],
+
+      array: [{
+        type: 'o'
+      }, {
+        type: 'a'
+      }]
+    },
+
+    o: {
+      args: [{
+        name: 's',
+        type: 'choice',
+        default: 'lucas',
+        choices: [
+          // TODO: complete choice
+          { value: 'lucas', name: 'Lucas' },
+          { value: 'z_bandit01', name: 'Bandit' },
+        ]
+      }, {
+        name: 'id',
+        type: 'string',
+        default: null
+      }, {
+        name: 'a',
+        type: 'choice',
+        default: null,
+        choices: [
+          { value: 'a', name: 'a' },
+          { value: 'b', name: 'b' },
+          { value: 'c', name: 'c' },
+          { value: 'd', name: 'd' },
+          { value: 'e', name: 'e' },
+          { value: 'f', name: 'f' }
+        ]
+      }, {
+        name: 'rid',
+        type: 'string',
+        default: '<id_of_rideable_object>'
+      }, this.facingChoice, {
+        name: 'x',
+        type: 'int',
+        default: 19350
+      }, {
+        name: 'y',
+        type: 'int',
+        default: 0
+      }, {
+        name: 'z',
+        type: 'int',
+        default: 810
+      }, {
+        name: 'c',
+        type: 'choice',
+        default: null,
+        choices: [
+          { value: '-2', name: 'Follow' },
+          { value: '-3', name: 'Ignore' }
+        ]
+      }]
+    },
+
+    a: {
+      args: [{
+        name: 'id',
+        type: 'string',
+        default: null
+      }, {
+        name: 'ac',
+        type: 'choice',
+        default: 'drama_attack',
+        choices: [
+          // TODO: complete choice
+          { value: 'drama_attack', name: 'drama_attack' },
+          { value: 'heal', name: 'heal' },
+          { value: 'run', name: 'run' },
+        ]
+      }, {
+        name: 'wac',
+        type: 'choice',
+        default: 'drama_attack',
+        choices: [
+          // TODO: complete choice
+          { value: 'drama_attack', name: 'drama_attack' },
+          { value: 'stand', name: 'stand' },
+          { value: 'run', name: 'run' },
+        ]
+      }, this.facingChoice, {
+        name: 'x',
+        type: 'int',
+        default: 19900
+      }, {
+        name: 'z',
+        type: 'int',
+        default: 1000
+      }],
+
+      array: [{
+        type: 't'
+      }, {
+        type: 'a'
+      }]
+    },
+
+    t: {
+      args: [{
+        name: 's',
+        type: 'string',
+        default: null
+      }, {
+        name: 'en',
+        type: 'string',
+        default: 'Pudding of the Universe'
+      }, {
+        name: 'b5',
+        type: 'string',
+        default: '宇宙的布丁'
+      }, {
+        // TODO: auto increment
+        name: 'i',
+        type: 'int',
+        default: 10
+      }]
+    },
+
+    obj: {
+      args: [{
+        name: 'id',
+        type: 'string',
+        default: '<put id of character here>'
+      }, {
+        name: 'hp',
+        type: 'int',
+        default: 120
+      }, {
+        name: 'times',
+        type: 'int',
+        default: null
+      }, {
+        name: 'ratio',
+        type: 'int',
+        default: null
+      }, {
+        name: 'grp',
+        type: 'int',
+        default: null
+      }, {
+        name: 'bossGrp',
+        type: 'int',
+        default: null
+      }, {
+        name: 'po',
+        type: 'choice',
+        default: null,
+        choices: [
+          { value: 'potion_red', name: 'Health potion' }
+        ]
+      }, {
+        name: 'a',
+        type: 'choice',
+        default: null,
+        choices: [
+          { value: 'a', name: 'a' },
+          { value: 'b', name: 'b' },
+          { value: 'c', name: 'c' },
+          { value: 'd', name: 'd' },
+          { value: 'e', name: 'e' },
+          { value: 'f', name: 'f' }
+        ]
+      }, {
+        name: 'h',
+        type: 'choice',
+        default: null,
+        choices: [
+          { value: 'p', name: 'Horse (rideable)' },
+          { value: 'o', name: 'Horse (not rideable)' },
+          { value: 'pm', name: 'Dinosaur (rideable)' },
+          { value: 'om', name: 'Dinosaur (not rideable)' },
+          { value: 'pt', name: 'Triceratops (rideable)' },
+          { value: 'ot', name: 'Triceratops (not rideable)' }
+        ]
+      }, {
+        name: 'toHire',
+        type: 'choice',
+        default: null,
+        choices: [{ value: '', name: 'enabled' }]
+      }, {
+        name: 'facing',
+        type: 'choice',
+        default: 0,
+        choices: [
+          { value: 0, name: 'Right' },
+          { value: 1, name: 'Left' }
+        ]
+      }, {
+        name: 'x',
+        type: 'int',
+        default: 20000
+      }, {
+        name: 'y',
+        type: 'int',
+        default: 0
+      }, {
+        name: 'z',
+        type: 'int',
+        default: 980
+      }]
+    }
+  };
+
+}

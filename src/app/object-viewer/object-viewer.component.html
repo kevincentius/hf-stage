@@ -1,0 +1,42 @@
+
+<div class="inverted-col">
+  <div class="obj-content" *ngIf="!collapsed">
+    <div class="obj-tab"></div>
+    <div class="obj-body">
+      <div class="obj-args" *ngIf="data.args">
+        <div *ngFor="let arg of data.args | keyvalue">
+          <div class="primitive" *ngIf="argTypeDict[arg.key].name">
+            <!-- primitive arg -->
+            <app-primitive-viewer [type]="argTypeDict[arg.key]" [(value)]="arg.value"></app-primitive-viewer>
+          </div>
+
+          <div *ngIf="!argTypeDict[arg.key].name">
+            <!-- object arg -->
+            <app-object-viewer #objChildren [data]="arg.value"></app-object-viewer>
+          </div>
+        </div>
+      </div>
+
+      <div class="obj-array" *ngIf="data.array">
+        <div *ngFor="let arr of data.array">
+          <div class="primitive" *ngIf="arrayTypeDict[arr.name].name">
+            <!-- primitive arr -->
+            <app-primitive-viewer [type]="arrayTypeDict[arr.name]" [(value)]="arr.value"></app-primitive-viewer>
+          </div>
+
+          <div *ngIf="!arrayTypeDict[arr.name].name">
+            <!-- object arr -->
+            <app-object-viewer #objChildren [data]="arr"></app-object-viewer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="obj-header" (click)="toggleCollapsed()">
+    <span *ngIf="collapsed" (click)="expandRecursive($event)"><img class="collapse-button" src="assets/icons/plus-square.svg" /></span>
+    <span *ngIf="!collapsed"><img class="collapse-button" src="assets/icons/minus-square.svg" /></span>
+    <span class="obj-name">{{data.name}}</span>
+    <span *ngIf="!collapsed">:</span>
+  </div>
+</div>

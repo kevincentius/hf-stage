@@ -1,0 +1,755 @@
+<!-- This is a sample story file to guide you through the basics -->
+
+<story>
+
+	<!--
+		This is the story ID, it ranges from story01 to story07, but it
+		should always be story01 by default because of players who have the
+		other stages locked.
+ 	-->
+	<storyid>story01</storyid>
+
+	<!--
+		The enemies' level on easy, normal and hard modes.
+		Crazy mode level cannot be defined on this script.
+	-->
+	<storylevel>1</storylevel>
+
+	<!-- Use <bar> to add a part, it can be a substage or a drama part. -->
+	<bar>
+		<!--
+			Background music. It ranges from 01.mp3 to 13.mp3.
+			https://hf-empire.com/forum/showthread.php?tid=91
+
+			The list of musics is as follows:
+				Music #1 - 01.mp3
+				Music #2 - 02.mp3
+				Music #3 - 03.mp3
+				Music #4 - 04.mp3
+				Music #5 - 05.mp3
+				Music #6 - 06.mp3
+				Music #7 - 07.mp3
+				Music #8 - 08.mp3
+				Music #9 - 09.mp3
+				Music #10 - 10.mp3
+				Music #11 - 12.mp3
+				Big 3 theme - 11.mp3
+				Romance - 13.mp3
+		-->
+		<bgm>13.mp3</bgm>
+
+		<!-- Add a background -->
+		<bg>
+			<!--
+				The id of the background can be one of the following:
+					battle2 (2 Teams Battle map)
+					battle3 (3 Teams Battle map)
+					battle4 (4 Teams Battle map)
+					desert
+					forest_grass
+					forest_mud (Lion Forest)
+					hill_dry (Fortress Hill)
+					hill_grass (Unused background, found within stage 8 code)
+					hill_mud
+					prison (The prison. Large background where Heater & Raye first showed up)
+					prison2 (Sinan's room, the room in Castle Dungeon with symbols on the floor)
+					prison_drama
+					rock_dry (San Po Cliff)
+					room1 (Small Hut)
+					story01 (Lion Forest with gate)
+					story02a (Lion Forest with tents and barricades, not large)
+					story02b (Lion Forest at night)
+					story02c (Lion Forest with gate at night)
+					story03a (Fortress Hill and outside of Temple of Hero)
+					story03b (Outside and entrance of Temple of Hero)
+					story03b2
+					story03c (Large Temple of Hero)
+					story03d (Small Hut - bugged map)
+					story04a (Temple of Hero at night, large)
+					story04b (Temple of Hero at evening)
+					story04c (Large San Po Cliff)
+					story05a (Phoenix Training Grounds)
+					story05a_drama
+					story05b (Large Lion Forest)
+					story05b_drama
+					story06a (Phoenix Castle)
+					story06b (Where Iczzy fought in stage 6, a giant Lion Forest with barricadde on both ends)
+					story06b2
+					story06c (Hell of Fire)
+					story06d (Forest where Raye fought in stage 6, before he uses Curse of Thunder)
+					story06d2
+					story07a (Northern Gate)
+					story07b (Desert at Sunset)
+					story07c (Northern Gate at Night)
+					story07d (Mountains)
+					temple (Temple of Hero)
+					trees_dry
+					trees_grass (Nottingham Forest)
+					trees_mud
+					village (Tai Hom Village)
+					village2 (Choi Hung Village)
+			-->
+			<bgid>story03b</bgid>
+			<!--
+				Use x, y and z to set the player's initial position.
+
+				x - horizontal, the scale is about 1:2, as in 100 units become
+					50 pixels. HF window is 962px wide, so an "x" with a value
+					of 962 would be at the center of the map horizontally.
+
+				z - depth (walk up/down). Higher numbers are down. Lower numbers
+					are up.
+
+				y - height (jump)
+
+				TODO: Figure out how we can measure this unit
+			-->
+			<x>20000</x>
+			<z>810</z>
+			<y>0</y>
+			<!-- Direction that the player is facing. 0 - right, 1 - left -->
+			<facing>0</facing>
+		</bg>
+		<!-- Use <left> and <right> to set the limits of the map. -->
+		<left>0</left>
+		<right>20400</right>
+
+		<!--
+			Use <effect> for effects, usually after a <bar> or during a drama.
+			Usually you'll want the showTitle effect on the first bar.
+
+			Effects List:
+				fadeToBlack        [Fades the screen into black]
+				fadeFromBlack      [Black fading out]
+				fadeToBlackFast    [A quicker version of fadeToBlack]
+				fadeFromBlackFast  [A quicker version of fadeFromBlack]
+				clearCount         [Puts the Clear countdown then advances to the next <bar>]
+				shutterClose       [Screen turns black in a shutter effect]
+				showTitle          [Shows the title of the stage]
+				storyend           [Ends a stage]
+				cavalry_coming     [Adds the 'Cavalry Coming!' warning]
+				blink              [Blinks the screen]
+				curse_of_thunder   [Adds the Curse of Thunder for one <bar>]
+		-->
+		<effect>showTitle</effect>
+
+		<!--
+			You may see a <remark> or <comment> tag in the official stories
+			scripts. They are just comments from the author about the code and
+			have no effect on the story. Personally I prefer to use XML-style
+			comments like this one that you're reading.
+		-->
+		<remark>
+		comment the following lines in World.as to enable show title effect
+		if ( storyEffect>4015 ) storyEffect = 4015;
+		</remark>
+
+		<!--
+			A drama scene is non-playable, it is used for telling the story.
+			The first drama is used to place the characters on the screen only
+			and it usually has a "start" state.
+		-->
+		<drama>
+			<!--
+				The state of the drama can be one of the following:
+
+					TODO: Confirm that the following is true
+					start - We are starting a new drama
+					start_add_half_hp - We are starting a new drama with the players having recovered HP
+					start_and_kill_soldiers - We are starting a new drama without the soldiers on the screen
+					start_and_kill_all_com_teammates - We are starting a new drama without teammates on the screen
+					end - We are ending a drama.
+			-->
+			<state>start</state>
+
+			<!-- Add a character on the scene -->
+			<o>
+				<!--
+					<s> is the character's id. It can be one of the following:
+
+					lucas
+					drew
+					shawn
+					jenny
+					jason
+					gordon
+					taylor
+					legge
+					vivian
+					eason0
+					eason
+					yaga
+					leo
+					giggs
+					titto
+					sinan
+					iczzy
+					heater
+					raye
+					livermore
+					lucas2 (Super Lucas)
+					saws
+					kids (Kid Eason)
+
+					z_archer01
+					z_bandit01
+					z_cavalry01
+					z_dagger01
+					z_iceman
+					z_infantry01
+					z_sickle01
+					z_skull
+					z_sorcerer01
+					z_swordsman01
+					z_villager01
+					z_woman01
+					z_axeman
+					z_wrestler
+
+					horse
+					horse_triceratops
+					horse_monster
+
+					item
+				-->
+				<s>lucas</s>
+				<!--
+					Whatever name you want to give to your character, it should
+					be a unique name so that if we have many characters of this
+					type we can identify each uniquely in order to perform actions
+					later on.
+				-->
+				<id>Apprentice</id>
+				<!-- 0 or 1 (the character will face right or left) -->
+				<f>0</f>
+
+				<!--
+					The character's position. y is optional and won't have
+					any effect unless there is a platform for the character
+					to step on.
+				-->
+				<x>19350</x>
+				<z>810</z>
+			</o>
+
+			<!--
+				We want Yaga on top of the castle. So, following stage 1's
+				example we put "y" as -622. If we do not, the character will
+				not be on top of the castle, but in front of it.
+			-->
+			<o><s>yaga</s><id>Master</id><f>1</f><x>20130</x><z>900</z><y>-622</y></o>
+			<o><s>z_infantry01</s><id>z_infantry01</id><f>1</f><x>20200</x><z>1000</z><y>-622</y></o>
+
+			<!--
+				We want to make the sorcerer ride the horse. The horse MUST be
+				defined before the sorcerer or it won't work.
+			-->
+			<o><s>horse</s><id>horse1</id><f>0</f><x>18000</x><z>980</z><c>-3</c><a>a</a></o>
+			<o>
+				<s>z_sorcerer01</s>
+				<id>z_sorcerer01</id>
+				<!--
+					Use <a>b</a> to give this character a skin. Other skinds available
+					are 'a', 'b', 'c'... depending on the character the number of skins available
+					varies. The skins available are the following (credits to vinax for finding
+					them out):
+					lucas:
+						"b"(Red Skin 红衣)
+						drew:
+						"b"(Red Skin 红衣)
+					shawn:
+						"b"(Red Skin 红衣)
+					vivian:
+						"a"(Ordinary sword 普通剑)
+						"b"(Swordless skin 无剑)
+					giggs:
+						"a"(Moore skin 摩尔)
+					Titto:
+						"a"(Moore skin 摩尔)
+						"b"(Red Skin 红衣)
+						"c"(Green Skin 绿衣)
+						"d"(Yellow Skin 黄衣)
+					jason:
+						"a"(Blue Skin 蓝衣)
+						"b"(Red Skin 红衣)
+						"c"(Green Skin 绿衣)
+						"d"(Yellow Skin 黄衣)
+					taylor:
+						"a"(Blue Skin 蓝衣)
+						"b"(Red Skin 红衣)
+						"c"(Green Skin 绿衣)
+						"d"(Yellow Skin 黄衣)
+					legge:
+						"a"(Blue Skin 蓝衣)
+						"b"(Red Skin 红衣)
+						"c"(Green Skin 绿衣)
+						"d"(Yellow Skin 黄衣)
+					yaga:
+						"a"(Blue Skin 蓝衣)
+						"b"(Red Skin 红衣)
+						"c"(Green Skin 绿衣)
+						"d"(Yellow Skin 黄衣)
+					heater:
+						"a"(Blue Skin 蓝衣)
+						"b"(Red Skin 红衣)
+						"c"(Green Skin 绿衣)
+						"d"(Yellow Skin 黄衣)
+					iczzy:
+						"a"(Blue Skin 蓝衣)
+						"b"(Red Skin 红衣)
+						"c"(Green Skin 绿衣)
+						"d"(Yellow Skin 黄衣)
+					raye:
+						"a"(Blue Skin 蓝衣)
+						"b"(Red Skin 红衣)
+						"c"(Green Skin 绿衣)
+						"d"(Yellow Skin 黄衣)
+					eason:
+						"a"(necklace 项链)
+						"b"(Sword 持剑)
+						"c"(Demon Lord's sword 死神之剑)
+					livermore:
+						"a"(Swordless skin 无剑)
+					saws:
+						"a"(Blue Skin 蓝衣)
+						"b"(Red Skin 红衣)
+						"c"(Green Skin 绿衣)
+						"d"(Yellow Skin 黄衣)
+					z_swordsman01:
+						"a"(Blue Skin 蓝衣)
+						"b"(Red Skin 红衣)
+						"c"(Green Skin 绿衣)
+						"d"(Yellow Skin 黄衣)
+						"e"(Chirs Skin 小春)
+						"f"(Sherwood Skin细荣)
+					Others 其他 (Black Skin 黑衣)
+					horse:
+						"a"(Ordinary horse 普通马)
+						"b"(black horse 黑马)
+						其他(Bug Skin)
+					horse_monster:
+						"a"(enemy skin 敌对)
+					horse_triceratops:
+						其他(Bug Skin)
+						"a"(enemy skin 敌对)
+					[Other troops] 其他兵种:
+						"a"(Blue Skin 蓝衣)
+						"b"(Red Skin 红衣)
+						"c"(Green Skin 绿衣)
+						"d"(Yellow Skin 黄衣)
+						Others 其他 (Black Skin 黑衣)
+				-->
+				<a>a</a>
+				<f>0</f>
+				<x>18000</x>
+				<z>980</z>
+				<!--
+					use <c>-3</c> so that the camera does not consider these characters
+					when for setting it's position. In other words, these characters won't
+					show on the screen because they will be out of bounds.
+
+					TODO: I don't know why the value is -3. Other value seen in the official
+					stages is -2 but it makes the camera consider the character for its position.
+				-->
+				<c>-3</c>
+				<!-- Use <rid> to make the character mount a horse or monster on screen -->
+				<rid>horse1</rid>
+			</o>
+
+			<o><s>z_bandit01</s><id>b1</id><f>0</f><x>18250</x><z>1060</z><c>-3</c></o>
+			<o><s>z_bandit01</s><id>b2</id><f>0</f><x>18250</x><z>900</z><c>-3</c></o>
+		</drama>
+	</bar>
+
+	<!--
+		Now that we've added our characters to the scene in the first drama
+		section, we will create a new drama, which must be in a new bar,
+		in order to give some action to our characters.
+	-->
+	<bar>
+		<drama>
+			<!--
+				To make a character talk.
+				<a> = action
+				<t> = talk
+			-->
+			<a><t>
+				<!--
+					<s> is optional. Without it the speech will not be associated
+					to any character, it will be narrator's voice.
+			 	-->
+				<s>yaga</s>
+
+				<!--
+					You may add <n>char_id</n> to make the speaker have a different
+					name. Names available are as follows (besides all available character's ids):
+						prison_guard (Guardian)
+						chris
+						sherwood
+						moore_general
+						Enemy
+				-->
+				<!-- <n>prison_guard</n> -->
+
+				<!--
+					Use <en> for the English version of the story. Any tabs and
+					newlines added in the dialogue will show on the stage.
+				-->
+				<en>Greetings, hero! In this tutorial stage I will be guiding you through the basics of story editing and show you some of the things that you can do.</en>
+
+				<!-- Use <b5> for the Chinese version of the story. -->
+				<b5>問候，英雄！ 在本教程階段，我將指導您完成故事編輯的基礎知識，並向您展示您可以做的一些事情。</b5>
+
+				<!--
+					<i> is used to define the dialog order. It is dialognumber * 10.
+					So, first dialogue will have i=10, second dialogue will have i=20,
+					and so on.
+				-->
+				<i>10</i>
+			</t></a>
+			<a><t>
+				<s>yaga</s>
+				<en>Be sure to read the comments on the script of this stage!</en>
+				<b5>請務必閱讀本階段腳本的評論！</b5>
+				<i>20</i>
+			</t></a>
+			<a><t>
+				<s>yaga</s>
+				<en>I will now send some bandits for you to fight. The soldier will assist you.</en>
+				<b5>我現在會派一些強盜給你打架。 士兵會幫助你。</b5>
+				<i>30</i>
+			</t></a>
+
+			<!--
+				To make a character do something.
+				<a> = action
+				<a> = action
+			-->
+			<a>
+				<a>
+					<id>Master</id>
+					<!--
+						TODO: Describe each action
+						To perform a special action we can use <ac>, it is optional.
+						Here are some known actions that we can use (depending on the char):
+							_rid_attack1
+							3
+							36
+							43
+							50
+							63
+							72
+							79
+							83
+							84
+							3knife
+							attack
+							attack1
+							attack2
+							attack3
+							attack4
+							attack5
+							attack5_jump
+							ball
+							ball1
+							ball2
+							ball3
+							ball4
+							ball2to1
+							bat
+							big_ball
+							boom
+							breakguard
+							brk0
+							brknow
+							clone
+							creobj
+							dizzy
+							dragon_punch
+							drama_lie1
+							drama_lie2
+							drama_poison1
+							drama_poison2
+							drama_poison3
+							drama_pushup
+							drama_sing
+							fall
+							fall1
+							fall5
+							fire_big_ball
+							fire_explode
+							five_shots
+							guard
+							heal
+							hp0
+							hp1
+							icecol
+							iceland
+							inv
+							inv0
+							inv50
+							jump_attack
+							jump_d_attack
+							jump_land
+							jump_start
+							k
+							kneel
+							laser
+							lie
+							lie_flip
+							lie_turn
+							many_punch
+							redcol
+							roll
+							run
+							run_attack
+							run_attack2
+							run_fixed_speed
+							run_stop
+							run_super_attacks
+							shield
+							sing
+							sky_roll
+							somersault
+							stand
+							superA
+							superwhip
+							to_jump_attack
+							up_attack
+					-->
+					<ac>drama_attack</ac>
+					<!-- you might insert other actions here by making more codes
+					like the second <a> to the first </a>. If you did, the
+					actions will be done in the same time. -->
+				</a>
+			</a>
+			<!--
+				<wac> seems to be used for standing, thus delaying the start of
+				the next action.
+
+				TODO: Find out what exactly is the difference between <wac> and <ac>
+		 	-->
+			<a><a><id>Master</id><wac>stand</wac></a></a>
+			<a><a><id>z_infantry01</id><f>1</f><x>19900</x><z>1000</z></a></a>
+
+			<a><a><id>Apprentice</id>
+					<!-- Change direction that the character is facing -->
+					<f>1</f>
+				</a>
+			</a>
+			<a><a><id>Apprentice</id><wac>stand</wac></a></a>
+			<a>
+				<!--
+					Perform 3 actions simultaneously. We move the horse instead
+					of the sorcerer.
+				-->
+				<a><id>horse1</id><x>18700</x><z>980</z></a>
+				<a><id>b1</id><x>18900</x><z>1060</z></a>
+				<a><id>b2</id><x>18900</x><z>900</z></a>
+			</a>
+			<a><a><id>horse1</id><wac>stand</wac></a></a>
+		</drama>
+	</bar>
+
+	<!-- Fade to black -->
+	<bar>
+		<effect>fadeToBlack</effect>
+	</bar>
+
+	<!-- Set map boundaries for fighting -->
+	<bar>
+		<left>16500</left>
+		<right>20500</right>
+	</bar>
+
+	<!-- End drama -->
+	<bar>
+		<drama>
+			<state>end</state>
+		</drama>
+		<effect>fadeFromBlack</effect>
+	</bar>
+
+	<!-- Playable scene -->
+	<bar>
+		<bgm>04.mp3</bgm>
+		<!-- Use <obj> to start a new character -->
+		<obj>
+			<!--
+				id is the character code of the character that you wish to use,
+				unlike in the drama scenes. This id is the equivalent of <s>
+				in drama.
+			-->
+			<id>z_sorcerer01</id>
+			<!--
+				Use <hp> to give the character a base hp value that differs from the
+				default. This is optional and is usually used for bosses.
+			-->
+			<hp>120</hp>
+			<!-- Use <grp>1</grp> to make the character boss of Army 1. This is optional.-->
+			<grp>1</grp>
+			<!--
+				Use <a>a</a> to give this character a skin. This is optional.
+				Other possible values for <a> are 'b', 'c', 'd'... and possible
+				more depending on the character.
+			-->
+			<a>a</a>
+			<!--
+				Use <h> to add ridees.
+				<h>o</h>  = dark horse (run away after rider got knocked)
+				<h>p</h>  = horse (stop after rider got knocked)
+				<h>pm</h> = monster/dinosaur (stop after rider got knocked)
+				<h>om</h> = monster/dinosaur (become an enemy after rider got knocked)
+				<h>pt</h> = triceratops (stop after rider got knocked)
+				<h>ot</h> = triceratops (become an enemy after rider got knocked)
+
+				first digit = o / p [O means dark, P means rideable by player]
+				second digit = none / m / t [None = Horse, M = Monster, T = Triceratops]
+
+				NOTE: Some characters, like Archer, cannot ride.
+				https://hf-empire.com/hf-empire/game-play/troops
+			-->
+			<h>p</h>
+			<!-- The enemies are coming from the left (and thus facing right) -->
+			<facing>0</facing>
+			<!--
+				Unlike the drama scenes whose coordinates are relative to the
+				entire map, these coordinates are relative to the visible area
+				of the map, which is why 'x' starts at 0.
+			-->
+			<x>0</x><z>980</z>
+		</obj>
+
+
+		<obj>
+			<id>z_bandit01</id>
+			<!--
+				Optionally, use <times> to determine how many times the
+				character will spawn.
+			-->
+			<times>12</times>
+			<!--
+				Optionally use <ratio> for the quantity, multiplied by players'.
+				A ratio of 1 means that there will be 1 enemy of this type
+				per player. Ratio of 0.5 would be 1 enemy per 2 players.
+			-->
+			<ratio>1</ratio>
+			<!--
+				<bossGrp>1</bossGrp> means they are the soldiers of Army 1,
+				and will die instantly when all bosses of Army 1 is defeated.
+			-->
+			<bossGrp>1</bossGrp>
+			<facing>0</facing>
+			<x>0</x><z>900</z>
+			<!--
+				We set the skin to blue because otherwise the stage assumes
+				that they should have red color due to being enemies. In this
+				case the bandits are supposed to be part of the Dragon tribe.
+			-->
+			<a>a</a>
+		</obj>
+
+
+		<obj>
+			<id>z_bandit01</id>
+			<times>12</times>
+			<ratio>1</ratio>
+			<!--
+				We could have this bandit be the boss of another army, while
+				still being a soldier of army 1.
+			-->
+			<!-- <grp>2</grp> -->
+			<bossGrp>1</bossGrp>
+			<!-- This bandit will drop a health potion -->
+			<po>potion_red</po>
+			<facing>0</facing>
+			<x>0</x><z>1060</z>
+			<a>a</a>
+		</obj>
+		<obj><id>z_infantry01</id><facing>0</facing><times>1</times><toHire></toHire><x>3300</x><z>-900</z></obj>
+	</bar>
+
+	<bar>
+		<effect>fadeToBlack</effect>
+	</bar>
+
+	<bar>
+		<bgm>13.mp3</bgm>
+		<bg>
+			<bgid>story03b</bgid>
+			<x>20000</x>
+			<z>800</z>
+			<y>0</y>
+			<facing>0</facing>
+		</bg>
+		<left>0</left>
+		<right>20400</right>
+		<drama>
+			<state>start</state>
+
+			<o><s>lucas</s><id>Apprentice</id><f>1</f><x>19350</x><z>810</z></o>
+			<o><s>yaga</s><id>Master</id><f>1</f><x>20130</x><z>900</z><y>-622</y></o>
+			<o><s>z_infantry01</s><id>z_infantry01</id><f>1</f><x>19200</x><z>1000</z></o>
+			<o><s>horse</s><id>horse1</id><f>0</f><x>19000</x><z>980</z><a>a</a></o>
+			<o><s>z_sorcerer01</s><id>z_sorcerer01</id><a>a</a><f>0</f><x>19000</x><z>810</z></o>
+			<o><s>z_bandit01</s><id>b1</id><f>0</f><x>18500</x><z>900</z></o>
+			<o><s>z_bandit01</s><id>b2</id><f>0</f><x>18750</x><z>710</z></o>
+		</drama>
+	</bar>
+	<bar>
+		<drama>
+			<a>
+				<a><id>b1</id><f>1</f><ac>lie</ac></a>
+				<a><id>b2</id><f>0</f><ac>lie</ac></a>
+				<a><id>z_sorcerer01</id><f>0</f><ac>kneel</ac></a>
+			</a>
+		</drama>
+	</bar>
+	<bar>
+		<effect>fadeFromBlack</effect>
+	</bar>
+	<bar>
+		<drama>
+			<a><t>
+				<s>yaga</s>
+				<en>Well done, hero! I hope that you've learned something about story editing by looking at the story script while playing.</en>
+				<b5>幹得好，英雄！ 我希望您通過在播放時查看故事腳本來學習故事編輯。</b5>
+				<i>40</i>
+			</t></a>
+			<a><t>
+				<s>yaga</s>
+				<en>This was just a very basic tutorial to get you started and is far from being exhaustive. There are many more things that you can learn by looking at other story scripts.</en>
+				<b5>這只是一個非常基本的教程，可以幫助您入門，而且遠非詳盡無遺。 通過查看其他故事腳本，您可以了解更多內容。</b5>
+				<i>50</i>
+			</t></a>
+			<a><t>
+				<s>yaga</s>
+				<en>Please do not hesitate to ask questions and share your creations at Hero Fighter Empire.
+https://hf-empire.com/forum/</en>
+				<b5>請不要猶豫，在Hero Fighter Empire上提問並分享您的作品。
+https://hf-empire.com/forum/</b5>
+				<i>60</i>
+			</t></a>
+			<a><t>
+				<s>yaga</s>
+				<en>Good luck and have fun!</en>
+				<b5>祝好運並玩得開心點！</b5>
+				<i>70</i>
+			</t></a>
+			<a><t>
+				<b5>--本關完結--
+MangaD的故事教程。感謝Leo Gautama找到了大部分工作原理。）</b5>
+				<en>--- Stage Finshed ---
+(Story tutorial by MangaD. Thanks to Leo Gautama for finding how most of the stuff works.)</en>
+				<i>80</i>
+			</t></a>
+		</drama>
+	</bar>
+
+	<!-- End the story. -->
+	<bar>
+		<bgm>off</bgm>
+		<effect>storyend</effect>
+	</bar>
+
+</story>
