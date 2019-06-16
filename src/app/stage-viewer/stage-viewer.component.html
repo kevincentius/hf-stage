@@ -18,5 +18,5 @@
   </div>
 </div>
 <div>
-  <input #xmlInp (click)="updateXml()" class="xml-field" value="{{ xml }}" />
+  <input #xmlInp (click)="updateXml()" (keyup.enter)="readXml()" class="xml-field" [(ngModel)]="xml" />
 </div>

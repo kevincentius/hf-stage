@@ -44,6 +44,10 @@ export class StageViewerComponent implements OnInit {
     this.xmlInp.nativeElement.select();
   }
 
+  readXml() {
+    this.data = this.xmlService.parse(this.xml);
+  }
+
   handleUpdateData(data) {
     this.data = data;
   }
