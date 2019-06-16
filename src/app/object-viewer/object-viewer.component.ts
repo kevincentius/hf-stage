@@ -67,11 +67,13 @@ export class ObjectViewerComponent implements OnInit {
 
     this.collapsed = false;
 
-    setTimeout(function() {
-      this.objChildren.forEach(c => {
-        c.expandRecursive(null);
-      });
-    }.bind(this));
+    if (this.data.name !== 'story') {
+      setTimeout(function() {
+        this.objChildren.forEach(c => {
+          c.expandRecursive(null);
+        });
+      }.bind(this));
+    }
   }
 
   updateArg(key, value) {
@@ -112,6 +114,18 @@ export class ObjectViewerComponent implements OnInit {
       };
     } else {
       this.data.args[argType.name] = argType.default;
+    }
+  }
+
+  addArr(argType) {
+    if (argType.name === undefined) {
+      this.data.array.push({
+        name: argType.type,
+        args: {},
+        array: []
+      });
+    } else {
+      this.data.array.push(argType.default);
     }
   }
 

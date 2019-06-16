@@ -75,6 +75,26 @@
           </div>
         </div>
       </div>
+
+      <!-- add arrs -->
+      <div class="add-args-panel">
+        <ng-container *ngFor="let arrType of type.array">
+          <div
+            class="add-arg-button arr"
+            *ngIf="arrType.name"
+            (click)="addArr(arrType)"
+          >
+            +{{ arrType.name }}
+          </div>
+          <div
+            class="add-arg-button arr"
+            *ngIf="arrType.name === undefined"
+            (click)="addArr(arrType)"
+          >
+            +{{ arrType.type }}
+          </div>
+        </ng-container>
+      </div>
     </div>
   </div>
 

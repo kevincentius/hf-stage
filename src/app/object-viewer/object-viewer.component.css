@@ -50,7 +50,7 @@
   margin-top: 4px;
   margin-bottom: 6px;
 }
-.obj-body:hover > .add-args-panel {
+.obj-content:hover > .obj-body > .add-args-panel {
   opacity: 1;
 }
 
@@ -63,9 +63,14 @@
   border-radius: 1000px;
   cursor: pointer;
 }
-
 .add-arg-button:hover {
   background: #ff0;
+}
+.add-arg-button.arr {
+  background: #fa48;
+}
+.add-arg-button:hover.arr {
+  background: #fa6;
 }
 
 .obj-content:hover ~ .obj-header {

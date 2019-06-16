@@ -55,6 +55,7 @@ export class XmlTypes {
         type: 'choice',
         default: '13.mp3',
         choices: [
+          { value: 'off', name: 'OFF' },
           { value: '01.mp3', name: 'Music #1' },
           { value: '02.mp3', name: 'Music #2' },
           { value: '03.mp3', name: 'Music #3' },
@@ -87,9 +88,10 @@ export class XmlTypes {
         default: 'showTitle',
         choices: [
           // TODO: complete choice
-          { value: 'showTitle', name: 'Show Title' },
+          { value: 'showTitle', name: 'Show title' },
           { value: 'fadeToBlack', name: 'Fade to black' },
-          { value: 'fadeFromBlack', name: 'Fade from black' }
+          { value: 'fadeFromBlack', name: 'Fade from black' },
+          { value: 'storyend', name: 'End of story'}
         ]
       }, {
         type: 'drama'
