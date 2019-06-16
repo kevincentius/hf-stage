@@ -1,9 +1,9 @@
 <div class="header" style="display: flex">
   <div style="flex-grow: 1">
-    <div class="arg-name">{{ type.name }}</div>
+    <div class="arg-name">{{ type.name + (type.shortDesc === undefined ? '' : '(' + type.shortDesc + ')') }}</div>
     :
     <input *ngIf="type.type==='string' || type.type==='int'" [(ngModel)]="value" (blur)="confirm()" (keyup.enter)="confirm()" />
-    <select *ngIf="type.type==='choice'" [(ngModel)]="value">
+    <select *ngIf="type.type==='choice'" [(ngModel)]="value" (change)="onSelectChange($event.target.value)">
       <option *ngFor="let choice of type.choices" [ngValue]="choice.value.toString()">{{choice.name + ' (' + choice.value + ')'}}</option>
     </select>
   </div>

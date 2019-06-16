@@ -20,6 +20,11 @@ export class PrimitiveViewerComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSelectChange(val) {
+    this.value = val;
+    this.confirm();
+  }
+
   confirm() {
     this.updateValue.emit(this.value);
   }

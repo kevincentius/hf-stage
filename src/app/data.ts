@@ -36,13 +36,13 @@ export class XmlTypes {
       args: [{
         name: 'storyid',
         type: 'string',
-        default: 'story01',
-        required: true
+        required: true,
+        default: 'story01'
       }, {
         name: 'storylevel',
         type: 'int',
-        default: 1,
-        required: true
+        required: true,
+        default: 1
       }],
       array: [{
         type: 'bar'
@@ -105,6 +105,7 @@ export class XmlTypes {
       args: [{
         name: 'bgid',
         type: 'choice',
+        required: true,
         default: 'story03b',
         choices: [
           // TODO: complete choice
@@ -157,12 +158,14 @@ export class XmlTypes {
       shortDesc: 'create object',
       args: [{
         name: 's',
+        shortDesc: 'character',
         type: 'choice',
+        required: true,
         default: 'lucas',
         choices: [
           // TODO: complete choice
           { value: 'lucas', name: 'Lucas' },
-          { value: 'z_bandit01', name: 'Bandit' },
+          { value: 'z_bandit01', name: 'Bandit' }
         ]
       }, {
         name: 'id',
@@ -170,6 +173,7 @@ export class XmlTypes {
         default: null
       }, {
         name: 'a',
+        shortDesc: 'skin',
         type: 'choice',
         default: null,
         choices: [
@@ -182,11 +186,13 @@ export class XmlTypes {
         ]
       }, {
         name: 'rid',
+        shortDesc: 'rideable id',
         type: 'string',
         default: '<id_of_rideable_object>'
       }, this.facingChoice, {
         name: 'x',
         type: 'int',
+        required: true,
         default: 19350
       }, {
         name: 'y',
@@ -195,9 +201,11 @@ export class XmlTypes {
       }, {
         name: 'z',
         type: 'int',
+        required: true,
         default: 810
       }, {
         name: 'c',
+        shortDesc: 'camera behavior',
         type: 'choice',
         default: null,
         choices: [
@@ -259,15 +267,18 @@ export class XmlTypes {
       }, {
         name: 'en',
         type: 'string',
+        required: true,
         default: 'Pudding of the Universe'
       }, {
         name: 'b5',
         type: 'string',
+        required: true,
         default: '宇宙的布丁'
       }, {
         // TODO: auto increment
         name: 'i',
         type: 'int',
+        required: true,
         default: 10
       }]
     },
@@ -276,8 +287,14 @@ export class XmlTypes {
       shortDesc: 'create enemy',
       args: [{
         name: 'id',
-        type: 'string',
-        default: '<put id of character here>'
+        type: 'choice',
+        required: true,
+        default: 'z_bandit01',
+        choices: [
+          { value: 'z_bandit01', name: 'Bandit' },
+          { value: 'z_sorcerer01', name: 'Sorcerer' },
+          { value: 'lucas', name: 'Lucas' },
+        ]
       }, {
         name: 'hp',
         type: 'int',
@@ -292,14 +309,17 @@ export class XmlTypes {
         default: null
       }, {
         name: 'grp',
+        shortDesc: 'boss',
         type: 'int',
         default: null
       }, {
         name: 'bossGrp',
+        shortDesc: 'soldier',
         type: 'int',
         default: null
       }, {
         name: 'po',
+        shortDesc: 'drop potion',
         type: 'choice',
         default: null,
         choices: [
@@ -307,6 +327,7 @@ export class XmlTypes {
         ]
       }, {
         name: 'a',
+        shortDesc: 'skin',
         type: 'choice',
         default: null,
         choices: [
@@ -319,6 +340,7 @@ export class XmlTypes {
         ]
       }, {
         name: 'h',
+        shortDesc: 'riding',
         type: 'choice',
         default: null,
         choices: [

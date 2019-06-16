@@ -1,3 +1,4 @@
+import { ObjService } from './../obj.service';
 import { XmlObjectType } from './../data';
 import { Component, OnInit, Input, QueryList, ViewChildren, Output, EventEmitter } from '@angular/core';
 import { XmlTypes } from '../data';
@@ -22,12 +23,13 @@ export class ObjectViewerComponent implements OnInit {
   argTypeDict;
   arrayTypeDict;
 
-  collapsed = true;
+  collapsed = false;
 
   @ViewChildren('objChildren') objChildren: QueryList<ObjectViewerComponent>;
 
   constructor(
-    private xmlTypes: XmlTypes
+    private xmlTypes: XmlTypes,
+    private objService: ObjService
   ) { }
 
   ngOnInit() {
@@ -107,11 +109,7 @@ export class ObjectViewerComponent implements OnInit {
 
   addArg(argType) {
     if (argType.name === undefined) {
-      this.data.args[argType.type] = {
-        name: argType.type,
-        args: {},
-        array: []
-      };
+      this.data.args[argType.type] = this.objService.createObj(argType.type);
     } else {
       this.data.args[argType.name] = argType.default;
     }
@@ -119,13 +117,12 @@ export class ObjectViewerComponent implements OnInit {
 
   addArr(argType) {
     if (argType.name === undefined) {
-      this.data.array.push({
-        name: argType.type,
-        args: {},
-        array: []
-      });
+      this.data.array.push(this.objService.createObj(argType.type));
     } else {
-      this.data.array.push(argType.default);
+      this.data.array.push({
+        name: argType.name,
+        value: argType.default
+      });
     }
   }
 

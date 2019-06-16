@@ -58,7 +58,7 @@
   font-size: 75%;
   padding: 0 7px;
   margin-right: 4px;
-  background: #dd48;
+  background: #dd45;
   color: black;
   border-radius: 1000px;
   cursor: pointer;
@@ -67,7 +67,7 @@
   background: #ff0;
 }
 .add-arg-button.arr {
-  background: #fa48;
+  background: #fa45;
 }
 .add-arg-button:hover.arr {
   background: #fa6;

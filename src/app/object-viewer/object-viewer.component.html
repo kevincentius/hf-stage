@@ -106,9 +106,9 @@
       <span *ngIf="!collapsed" (click)="toggleCollapsed($event)"
         ><img class="collapse-button" src="assets/icons/minus-square.svg"
       /></span>
-      <span class="obj-name" (click)="expandRecursive($event)">{{
-        data.name
-      }}</span>
+      <span class="obj-name" (click)="expandRecursive($event)">
+        {{ data.name + (xmlTypes.types[data.name].shortDesc === undefined ? '' : '(' + xmlTypes.types[data.name].shortDesc + ')') }}
+      </span>
       <span *ngIf="!collapsed">:</span>
     </div>
 
