@@ -98,12 +98,10 @@ export class ObjectViewerComponent implements OnInit {
   }
 
   selectThisObject(e) {
-    console.log('this select', e);
     this.selectObject.emit({viewer: this, data: this.data});
   }
 
   selectChildObject(e) {
-    console.log('child select', e);
     this.selectObject.emit(e);
   }
 

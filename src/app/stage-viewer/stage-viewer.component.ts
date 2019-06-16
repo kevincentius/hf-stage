@@ -53,7 +53,6 @@ export class StageViewerComponent implements OnInit {
   }
 
   showObject(e) {
-    console.log('show object', e);
     this.selected = e;
   }
 

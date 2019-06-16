@@ -25,7 +25,6 @@ export class ObjService {
       }
     }
 
-    console.log(obj);
     return obj;
   }
 
