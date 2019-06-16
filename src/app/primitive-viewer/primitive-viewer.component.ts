@@ -13,6 +13,8 @@ export class PrimitiveViewerComponent implements OnInit {
   @Output() updateValue = new EventEmitter();
   @Input() value;
 
+  @Output() delete = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {

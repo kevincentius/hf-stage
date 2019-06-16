@@ -1,4 +1,11 @@
+<div class="header" style="display: flex">
+  <div style="flex-grow: 1">
+    <div class="arg-name">{{ type.name }}</div>
+    :
+    <input [(ngModel)]="value" (blur)="confirm()" (keyup.enter)="confirm()" />
+  </div>
 
-<div class="arg-name">{{type.name}}</div>:
-
-<input [(ngModel)]="value" (blur)="confirm()" (keyup.enter)="confirm()" />
+  <div (click)="delete.emit()">
+    <img class="collapse-button delete-button" src="assets/icons/trash-2.svg" />
+  </div>
+</div>

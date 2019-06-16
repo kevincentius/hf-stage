@@ -15,6 +15,7 @@ export class ObjectViewerComponent implements OnInit {
   @Input() data;
 
   @Output() selectObject = new EventEmitter();
+  @Output() delete = new EventEmitter();
 
   type: XmlObjectType;
 
@@ -102,4 +103,28 @@ export class ObjectViewerComponent implements OnInit {
     this.selectObject.emit(e);
   }
 
+  addArg(argType) {
+    if (argType.name === undefined) {
+      this.data.args[argType.type] = {
+        name: argType.type,
+        args: {},
+        array: []
+      };
+    } else {
+      this.data.args[argType.name] = argType.default;
+    }
+  }
+
+  deleteArg(key) {
+    delete this.data.args[key];
+  }
+
+  deleteArr(i) {
+    this.data.array.splice(i, 1);
+  }
+
+  clickDelete(e) {
+    e.stopPropagation();
+    this.delete.emit();
+  }
 }

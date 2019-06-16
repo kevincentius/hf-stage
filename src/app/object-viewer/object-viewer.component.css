@@ -20,6 +20,7 @@
 }
 
 .obj-header {
+  display: flex;
   cursor: pointer;
 }
 .obj-header:hover {
@@ -34,6 +35,13 @@
 
 .collapse-button:hover {
   background: #fff6;
+}
+
+.delete-button {
+  display: none;
+}
+.obj-header:hover .delete-button {
+  display: block;
 }
 
 .obj-content:hover ~ .obj-header {

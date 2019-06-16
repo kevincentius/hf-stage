@@ -4,3 +4,16 @@
   width: 80px;
   font-style: italic;
 }
+
+.delete-button {
+  display: none;
+  height: 20px;
+  margin-bottom: -6px;
+  margin-right: 6px;
+}
+.delete-button:hover {
+  background: #fff6;
+}
+.header:hover .delete-button {
+  display: block;
+}
