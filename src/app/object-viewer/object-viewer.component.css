@@ -44,6 +44,30 @@
   display: block;
 }
 
+.add-args-panel {
+  display: flex;
+  opacity: 0;
+  margin-top: 4px;
+  margin-bottom: 6px;
+}
+.obj-body:hover > .add-args-panel {
+  opacity: 1;
+}
+
+.add-arg-button {
+  font-size: 75%;
+  padding: 0 7px;
+  margin-right: 4px;
+  background: #dd48;
+  color: black;
+  border-radius: 1000px;
+  cursor: pointer;
+}
+
+.add-arg-button:hover {
+  background: #ff0;
+}
+
 .obj-content:hover ~ .obj-header {
   background: #fff4;
 }
@@ -58,8 +82,8 @@
 
 .obj-content:hover {
   border-left: solid rgba(187, 52, 52, 0.533) 2px;
-  border-top: solid #fff2 2px;
-  border-bottom: solid #fff2 2px;
+  border-top: solid rgba(187, 52, 52, 0.533) 2px;
+  border-bottom: solid rgba(187, 52, 52, 0.533) 2px;
 }
 
 .obj-tab {

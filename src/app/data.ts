@@ -99,6 +99,7 @@ export class XmlTypes {
     },
 
     bg: {
+      shortDesc: 'background',
       args: [{
         name: 'bgid',
         type: 'choice',
@@ -151,6 +152,7 @@ export class XmlTypes {
     },
 
     o: {
+      shortDesc: 'create object',
       args: [{
         name: 's',
         type: 'choice',
@@ -204,6 +206,7 @@ export class XmlTypes {
     },
 
     a: {
+      shortDesc: 'action',
       args: [{
         name: 'id',
         type: 'string',
@@ -246,6 +249,7 @@ export class XmlTypes {
     },
 
     t: {
+      shortDesc: 'show text',
       args: [{
         name: 's',
         type: 'string',
@@ -267,6 +271,7 @@ export class XmlTypes {
     },
 
     obj: {
+      shortDesc: 'create enemy',
       args: [{
         name: 'id',
         type: 'string',

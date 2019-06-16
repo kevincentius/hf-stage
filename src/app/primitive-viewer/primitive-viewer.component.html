@@ -2,7 +2,10 @@
   <div style="flex-grow: 1">
     <div class="arg-name">{{ type.name }}</div>
     :
-    <input [(ngModel)]="value" (blur)="confirm()" (keyup.enter)="confirm()" />
+    <input *ngIf="type.type==='string' || type.type==='int'" [(ngModel)]="value" (blur)="confirm()" (keyup.enter)="confirm()" />
+    <select *ngIf="type.type==='choice'" [(ngModel)]="value">
+      <option *ngFor="let choice of type.choices" [ngValue]="choice.value.toString()">{{choice.name + ' (' + choice.value + ')'}}</option>
+    </select>
   </div>
 
   <div (click)="delete.emit()">
