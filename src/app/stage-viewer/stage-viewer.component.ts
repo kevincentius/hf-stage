@@ -40,4 +40,8 @@ export class StageViewerComponent implements OnInit {
     this.xmlInp.nativeElement.select();
   }
 
+  handleUpdateData(data) {
+    this.data = data;
+  }
+
 }

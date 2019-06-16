@@ -1,4 +1,4 @@
 
 <div class="arg-name">{{type.name}}</div>:
 
-<input [(ngModel)]="value" />
+<input [(ngModel)]="value" (blur)="confirm()" (keyup.enter)="confirm()" />

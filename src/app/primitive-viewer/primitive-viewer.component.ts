@@ -10,13 +10,16 @@ export class PrimitiveViewerComponent implements OnInit {
 
   @Input() type: XmlPrimitiveType;
 
-  @Output() valueChange = new EventEmitter();
+  @Output() updateValue = new EventEmitter();
   @Input() value;
 
   constructor() { }
 
   ngOnInit() {
-    this.value = 'asdf';
+  }
+
+  confirm() {
+    this.updateValue.emit(this.value);
   }
 
 }

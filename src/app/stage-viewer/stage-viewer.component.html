@@ -1,15 +1,5 @@
 
-<div *ngFor="let k of Object.keys(x)">
-  <input [(ngModel)]="x[k]" />
-</div>
-
-<div *ngFor="let a of x | keyvalue">
-  <input [(ngModel)]="a.value" />
-</div>
-
-<button (click)="console.log(x);">Click</button>
-
 <div style="flex-grow: 1; overflow: auto;">
-  <app-object-viewer *ngIf="data" [data]="data"> </app-object-viewer>
+  <app-object-viewer *ngIf="data" [data]="data" (updateData)="handleUpdateData($event)"> </app-object-viewer>
 </div>
 <div><input #xmlInp (click)="updateXml()" class="xml-field" value="{{xml}}" /></div>

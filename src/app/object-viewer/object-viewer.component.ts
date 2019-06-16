@@ -1,5 +1,5 @@
 import { XmlObjectType } from './../data';
-import { Component, OnInit, Input, ContentChildren, QueryList, ViewChildren } from '@angular/core';
+import { Component, OnInit, Input, ContentChildren, QueryList, ViewChildren, Output, EventEmitter } from '@angular/core';
 import { XmlTypes } from '../data';
 
 @Component({
@@ -11,6 +11,7 @@ export class ObjectViewerComponent implements OnInit {
 
   Object = Object;
 
+  @Output() updateData = new EventEmitter();
   @Input() data;
   type: XmlObjectType;
 
@@ -67,6 +68,25 @@ export class ObjectViewerComponent implements OnInit {
         c.expandRecursive(null);
       });
     }.bind(this));
+  }
+
+  updateArg(key, value) {
+    this.data.args[key] = value;
+    this.updateObj();
+  }
+
+  updateArr(i, value) {
+    this.data.array[i] = value;
+    this.updateObj();
+  }
+
+  updateArrPrimitive(i, value) {
+    this.data.array[i].value = value;
+    this.updateObj();
+  }
+
+  updateObj() {
+    this.updateData.emit(this.data);
   }
 
 }
