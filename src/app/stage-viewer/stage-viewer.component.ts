@@ -12,10 +12,10 @@ export class StageViewerComponent implements OnInit {
 
   Object = Object;
   console = console;
-  x = [1, 2, 3];
 
   data;
   xml;
+  selected;
 
   @ViewChild('xmlInp') xmlInp;
 
@@ -42,6 +42,11 @@ export class StageViewerComponent implements OnInit {
 
   handleUpdateData(data) {
     this.data = data;
+  }
+
+  showObject(e) {
+    console.log('show object', e);
+    this.selected = e;
   }
 
 }

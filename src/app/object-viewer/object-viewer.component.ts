@@ -1,5 +1,5 @@
 import { XmlObjectType } from './../data';
-import { Component, OnInit, Input, ContentChildren, QueryList, ViewChildren, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, QueryList, ViewChildren, Output, EventEmitter } from '@angular/core';
 import { XmlTypes } from '../data';
 
 @Component({
@@ -13,6 +13,9 @@ export class ObjectViewerComponent implements OnInit {
 
   @Output() updateData = new EventEmitter();
   @Input() data;
+
+  @Output() selectObject = new EventEmitter();
+
   type: XmlObjectType;
 
   argTypeDict;
@@ -87,6 +90,16 @@ export class ObjectViewerComponent implements OnInit {
 
   updateObj() {
     this.updateData.emit(this.data);
+  }
+
+  selectThisObject(e) {
+    console.log('this select', e);
+    this.selectObject.emit({viewer: this, data: this.data});
+  }
+
+  selectChildObject(e) {
+    console.log('child select', e);
+    this.selectObject.emit(e);
   }
 
 }

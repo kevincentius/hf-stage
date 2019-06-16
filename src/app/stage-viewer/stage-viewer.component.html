@@ -1,5 +1,21 @@
-
-<div style="flex-grow: 1; overflow: auto;">
-  <app-object-viewer *ngIf="data" [data]="data" (updateData)="handleUpdateData($event)"> </app-object-viewer>
+<div style="flex-grow: 1;">
+  <div style="display: flex; height: 100%">
+    <div style="flex-grow: 1; flex-basis: 0; overflow: auto; border-right: solid #fff2 2px;">
+      <app-object-viewer
+        *ngIf="data"
+        [data]="data"
+        (updateData)="handleUpdateData($event)"
+        (selectObject)="showObject($event)"
+      >
+      </app-object-viewer>
+    </div>
+    <div style="flex-grow: 1; flex-basis: 0">
+      <ng-container *ngIf="selected">
+        {{ selected.data.name }}
+      </ng-container>
+    </div>
+  </div>
 </div>
-<div><input #xmlInp (click)="updateXml()" class="xml-field" value="{{xml}}" /></div>
+<div>
+  <input #xmlInp (click)="updateXml()" class="xml-field" value="{{ xml }}" />
+</div>

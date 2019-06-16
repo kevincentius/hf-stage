@@ -10,10 +10,18 @@
 }
 
 .obj-name {
+  font-size: 125%;
   font-style: italic;
   font-weight: bold;
 }
+.obj-name:hover {
+  background: #fff1;
+  text-decoration: underline;
+}
 
+.obj-header {
+  cursor: pointer;
+}
 .obj-header:hover {
   background: #fff2;
 }
@@ -41,7 +49,7 @@
 }
 
 .obj-content:hover {
-  border-left: solid #fff8 2px;
+  border-left: solid rgba(187, 52, 52, 0.533) 2px;
   border-top: solid #fff2 2px;
   border-bottom: solid #fff2 2px;
 }
