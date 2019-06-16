@@ -23,7 +23,7 @@ export class ObjectViewerComponent implements OnInit {
   argTypeDict;
   arrayTypeDict;
 
-  collapsed = false;
+  collapsed = true;
 
   @ViewChildren('objChildren') objChildren: QueryList<ObjectViewerComponent>;
 

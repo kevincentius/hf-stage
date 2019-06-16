@@ -21,11 +21,13 @@ export class PrimitiveViewerComponent implements OnInit {
   }
 
   onSelectChange(val) {
-    this.value = val;
+    this.value = val.split(/: (.+)/)[1];
     this.confirm();
   }
 
   confirm() {
+    console.log(typeof(this.value));
+    console.log(this.value);
     this.updateValue.emit(this.value);
   }
 
